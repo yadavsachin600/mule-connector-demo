@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/Message",
+  "definitions": {"Message": {
+    "x-amf-examples": {"output": {
+      "id": 100,
+      "message": "An imaginary flight has been added successfully"
+    }},
+    "additionalProperties": true,
+    "type": "object",
+    "required": [
+      "id",
+      "message"
+    ],
+    "properties": {
+      "id": {"type": "integer"},
+      "message": {"type": "string"}
+    }
+  }}
+}

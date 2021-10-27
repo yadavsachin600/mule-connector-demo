@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress HtmlUnknownTag -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>American Flights Connector</name>
+    
+    <parent>
+        <groupId>com.mulesoft.connectivity</groupId>
+        <artifactId>rest-sdk-connector-parent-pom</artifactId>
+        <version>0.8.0-alpha.1</version>
+    </parent>
+
+    <groupId>68901835-ee16-4440-94b8-8f9ec8d70fcd</groupId>
+    <artifactId>american-flights-connector</artifactId>
+    <version>1.0.0</version>
+    <packaging>mule-extension</packaging>
+
+    <properties>
+        <rest.sdk.commons.version>0.8.0-alpha.1</rest.sdk.commons.version>
+        <rest.sdk.mojo.version>0.8.0-alpha.1</rest.sdk.mojo.version>
+
+        <shadePackage>americanflightsconnector</shadePackage>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.runtime.plugins</groupId>
+                <artifactId>mule-extensions-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.mule.runtime.plugins</groupId>
+                <artifactId>mule-extensions-shade-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.mulesoft.munit</groupId>
+                <artifactId>munit-extensions-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+	
+	<repositories>
+		<repository>
+			<id>mule-releases</id>
+			<name>Nexus Public Releases</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange</id>
+			<name>Exchange Repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v1/organizations/68901835-ee16-4440-94b8-8f9ec8d70fcd/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+</project>
