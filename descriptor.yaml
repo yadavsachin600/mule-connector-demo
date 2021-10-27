@@ -1,0 +1,14 @@
+#% Rest Connector Descriptor 1.0
+
+apiSpec:
+  url: 'C:\Users\sacyadav\Desktop\MuleSoft\AmericanFlightsAPI\american-flights-api.raml'
+
+connectorName: American Flights
+
+connectorGav:
+  groupId: com.mulesoft.connectors
+  artifactId: american-flights-api
+  version: 1.0.0-SNAPSHOT
+
+baseUri:
+  type: parameter

@@ -1,0 +1,93 @@
+#%RAML 1.0
+version: v1
+title: American Flights API
+
+#Traits definition
+traits:
+  client-id-required: !include traits/client-id-required.raml
+
+#Data Types definition
+types: 
+  AmericanFlight: !include dataTypes/american-flight.raml
+  Message: !include dataTypes/message.raml
+
+#Resources
+/flights:
+  is: [client-id-required]
+  get:
+    displayName: Get Flights
+    description: Retrieve list of flights between given source and destination
+    queryParameters: 
+      source:
+        description: Source Location
+        required: true
+        enum:
+          - SFO
+          - LAX
+          - SJC
+      destination:
+        description: Destination Location
+        required: true
+        enum: 
+          - SFO
+          - LAX
+          - SJC
+    responses: 
+      200:
+        body: 
+          application/json:
+            type: AmericanFlight[]
+            examples: 
+              output: !include examples/american-flights-example.raml
+            
+  post:
+    displayName: Add New Flight
+    description: Add a new imaginary flight to the American Flights Airline
+    body:
+      application/json:
+        type: AmericanFlight
+        examples: 
+          input: !include examples/american-flight-no-id-example.raml
+    responses: 
+      201:
+        body:
+          application/json:
+            type: Message
+            examples:
+              output: !include examples/american-flight-only-id-example.raml
+  
+  /{ID}:
+    is: [client-id-required]
+    get:
+      displayName: Get Flight By ID
+      description: Retrieve Flight details of given flight id
+      responses: 
+        200:
+          body: 
+            application/json:
+              type: AmericanFlight
+              examples:
+                output: !include examples/american-flight-example.raml
+    delete:
+      displayName: Delete a Flight
+      description: Delete an imaginary flight from American Flights Airline
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: An imaginary flight deleted
+    put:
+      displayName: Update a Flight
+      description: Update an imaginary flight in American Flights Airline
+      body:
+        application/json:
+          type: AmericanFlight
+          examples: 
+            input: !include examples/american-flight-no-id-example.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: An imaginary flight updated
